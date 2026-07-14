@@ -207,7 +207,7 @@
   @media (max-width: 1220px) { .side-nav { display: none; } }
 
   /* ================= hero ================= */
-  .hero { padding: 52px 0 26px; }
+  .hero { padding: 52px 36px 26px; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.45fr 1fr;
@@ -650,43 +650,50 @@
 
   /* ================= responsive ================= */
   @media (max-width: 900px) {
-    body { font-size: 17px; line-height: 1.75; }
-    .wrap { padding: 0 20px; }
-    .hero { padding: 26px 0 14px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 26px; }
-    .name-zh { font-size: clamp(56px, 15vw, 76px); }
-    .name-en-big { font-size: clamp(44px, 11vw, 60px); }
-    .motto { font-size: 22px; margin-top: 18px; }
-    .intro { font-size: 15.5px; }
+    body { font-size: 16px; line-height: 1.72; }
+    .wrap { padding: 0 22px; }
+    .hero { padding: 24px 22px 12px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+    .name-zh { font-size: clamp(48px, 12.5vw, 64px); }
+    .name-en-big { font-size: clamp(38px, 9.5vw, 52px); }
+    .motto { font-size: 20px; margin-top: 16px; }
+    .intro { font-size: 15px; }
     .portrait {
       justify-self: center;
-      width: min(230px, 64%);
-      margin: 6px auto 14px;
+      width: min(200px, 58%);
+      margin: 4px auto 12px;
     }
-    .chips { gap: 8px; }
-    .chip { font-size: 13px; padding: 6px 14px; }
-    .titles { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
-    .titles li { padding: 12px 14px 10px; border-radius: 14px; }
-    .titles .t-role { font-size: 15px; }
-    .titles .t-org { font-size: 12px; }
-    .panel { padding: 30px 22px 26px; border-radius: 20px; }
+    .chips { gap: 7px; }
+    .chip { font-size: 12.5px; padding: 5px 13px; }
+    .titles { grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 20px; }
+    .titles li { padding: 11px 13px 9px; border-radius: 13px; }
+    .titles .t-role { font-size: 14.5px; }
+    .titles .t-org { font-size: 11.5px; }
+    .panel { padding: 26px 20px 22px; border-radius: 18px; }
     .panel-outer { padding: 0 14px; }
-    .panel h2 { font-size: 26px; }
-    .h2-brush { margin-bottom: 24px; }
-    .row, .case { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
-    .row .when { white-space: normal; font-size: 13.5px; padding-top: 0; }
-    .row h3 { font-size: 17.5px; }
-    .row .role { font-size: 15px; }
-    .row li, .case-body li, .strength li, .skill li, .plain-list li { font-size: 15px; }
-    .case-meta h3 { font-size: 21px; }
-    .case-meta .role { font-size: 14.5px; }
-    .two-col { grid-template-columns: 1fr; gap: 26px; }
-    .strength-grid { grid-template-columns: 1fr; gap: 16px; }
-    .strength { padding: 22px 20px 20px; }
-    .skill-grid { grid-template-columns: 1fr; gap: 16px; }
-    .skill { padding: 20px 20px 18px; }
+    .panel h2 { font-size: 24px; }
+    .h2-brush { margin-bottom: 22px; }
+    .row, .case { grid-template-columns: 1fr; gap: 5px; padding: 18px 0; }
+    .row .when { white-space: normal; font-size: 13px; padding-top: 0; }
+    .row h3 { font-size: 16.5px; }
+    .row .role { font-size: 14.5px; }
+    .row li, .case-body li, .plain-list li { font-size: 14.5px; }
+    .case-meta h3 { font-size: 19.5px; }
+    .case-meta .role { font-size: 14px; }
+    .two-col { grid-template-columns: 1fr; gap: 24px; }
+    .strength-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .strength { padding: 16px 14px 14px; border-radius: 16px; }
+    .strength h3 { font-size: 13.5px; padding: 6px 12px; border-radius: 9px; margin-bottom: 12px; }
+    .strength li { font-size: 13px; margin-bottom: 7px; }
+    .skill-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .skill { padding: 16px 14px 14px; border-radius: 16px; }
+    .skill h3 { font-size: 15.5px; margin-bottom: 10px; padding-bottom: 8px; }
+    .skill li { font-size: 13px; margin-bottom: 6px; }
+    .skill .big { font-size: 15px; }
+    .skill:last-child { grid-column: 1 / -1; }
     .stage-grid { grid-template-columns: 1fr; }
-    .footer { padding: 44px 24px 48px; border-radius: 20px; margin-bottom: 32px; }
+    .footer { padding: 40px 22px 44px; border-radius: 18px; margin-bottom: 28px; }
+    .lang-toggle button { font-size: 11px; padding: 4px 10px; letter-spacing: 0.05em; }
   }
 </style>
 
