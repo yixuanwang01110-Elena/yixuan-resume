@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>王奕萱 Yixuan Wang</title>
 <style>
   :root {
@@ -120,6 +125,40 @@
   }
   .lang-toggle button.active { background: var(--green); color: var(--panel); }
   .lang-toggle button:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+
+  /* ================= top nav (mobile/tablet) ================= */
+  .top-nav { display: none; }
+  @media (max-width: 1220px) {
+    .top-nav {
+      display: flex;
+      position: sticky;
+      top: 0;
+      z-index: 45;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 10px 118px 10px 14px;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--hairline);
+      scrollbar-width: none;
+    }
+    .top-nav::-webkit-scrollbar { display: none; }
+    .top-nav a {
+      flex: none;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14.5px;
+      letter-spacing: 0.04em;
+      padding: 7px 14px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+    .top-nav a.active { background: var(--green); color: var(--panel); font-weight: 600; }
+    .top-nav a:focus-visible { outline: 2px solid var(--green-soft); outline-offset: -2px; }
+    .lang-toggle { top: 8px; right: 10px; }
+    .panel, .hero, .footer { scroll-margin-top: 62px; }
+  }
 
   /* ================= side nav ================= */
   .side-nav {
@@ -611,21 +650,55 @@
 
   /* ================= responsive ================= */
   @media (max-width: 900px) {
-    body { font-size: 16px; }
-    .hero { padding: 60px 0 20px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-    .portrait { justify-self: start; width: min(240px, 68%); }
-    .panel { padding: 32px 26px 28px; border-radius: 22px; }
-    .panel-outer { padding: 0 18px; }
-    .offstage { border-radius: 22px; margin: 22px 18px; }
-    .offstage-inner { padding: 44px 28px 40px; }
-    .row, .case { grid-template-columns: 1fr; gap: 8px; }
+    body { font-size: 17px; line-height: 1.75; }
+    .wrap { padding: 0 20px; }
+    .hero { padding: 26px 0 14px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 26px; }
+    .name-zh { font-size: clamp(56px, 15vw, 76px); }
+    .name-en-big { font-size: clamp(44px, 11vw, 60px); }
+    .motto { font-size: 22px; margin-top: 18px; }
+    .intro { font-size: 15.5px; }
+    .portrait {
+      justify-self: center;
+      width: min(230px, 64%);
+      margin: 6px auto 14px;
+    }
+    .chips { gap: 8px; }
+    .chip { font-size: 13px; padding: 6px 14px; }
+    .titles { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+    .titles li { padding: 12px 14px 10px; border-radius: 14px; }
+    .titles .t-role { font-size: 15px; }
+    .titles .t-org { font-size: 12px; }
+    .panel { padding: 30px 22px 26px; border-radius: 20px; }
+    .panel-outer { padding: 0 14px; }
+    .panel h2 { font-size: 26px; }
+    .h2-brush { margin-bottom: 24px; }
+    .row, .case { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+    .row .when { white-space: normal; font-size: 13.5px; padding-top: 0; }
+    .row h3 { font-size: 17.5px; }
+    .row .role { font-size: 15px; }
+    .row li, .case-body li, .strength li, .skill li, .plain-list li { font-size: 15px; }
+    .case-meta h3 { font-size: 21px; }
+    .case-meta .role { font-size: 14.5px; }
     .two-col { grid-template-columns: 1fr; gap: 26px; }
-    .strength-grid { grid-template-columns: 1fr; }
-    .skill-grid { grid-template-columns: 1fr; }
+    .strength-grid { grid-template-columns: 1fr; gap: 16px; }
+    .strength { padding: 22px 20px 20px; }
+    .skill-grid { grid-template-columns: 1fr; gap: 16px; }
+    .skill { padding: 20px 20px 18px; }
     .stage-grid { grid-template-columns: 1fr; }
+    .footer { padding: 44px 24px 48px; border-radius: 20px; margin-bottom: 32px; }
   }
 </style>
+
+<nav class="top-nav" aria-label="Sections">
+  <a href="#top"><span class="zh">首页</span><span class="en">Home</span></a>
+  <a href="#edu"><span class="zh">教育</span><span class="en">Education</span></a>
+  <a href="#work"><span class="zh">实习</span><span class="en">Work</span></a>
+  <a href="#projects"><span class="zh">专业</span><span class="en">Projects</span></a>
+  <a href="#strengths"><span class="zh">优势</span><span class="en">Strengths</span></a>
+  <a href="#honours"><span class="zh">荣誉</span><span class="en">Honours</span></a>
+  <a href="#skills"><span class="zh">技能</span><span class="en">Skills</span></a>
+</nav>
 
 <div class="lang-toggle" role="group" aria-label="Language">
   <button id="btn-zh" class="active" type="button">中文</button>
@@ -1011,10 +1084,13 @@
       items.forEach(function (el) { io.observe(el); });
     }
 
-    /* side-nav active highlight */
-    var links = document.querySelectorAll(".side-nav a");
+    /* nav active highlight (side nav + mobile top nav) */
+    var links = document.querySelectorAll(".side-nav a, .top-nav a");
     var map = {};
-    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      (map[id] = map[id] || []).push(a);
+    });
     var targets = ["top", "edu", "work", "projects", "strengths", "honours", "skills"]
       .map(function (id) { return document.getElementById(id); })
       .filter(Boolean);
@@ -1023,12 +1099,18 @@
         entries.forEach(function (en) {
           if (en.isIntersecting) {
             links.forEach(function (a) { a.classList.remove("active"); });
-            var a = map[en.target.id];
-            if (a) a.classList.add("active");
+            (map[en.target.id] || []).forEach(function (a) {
+              a.classList.add("active");
+              if (a.closest(".top-nav")) {
+                a.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+              }
+            });
           }
         });
-      }, { rootMargin: "-35% 0px -55% 0px" });
+      }, { rootMargin: "-30% 0px -60% 0px" });
       targets.forEach(function (t) { navIo.observe(t); });
     }
   })();
 </script>
+</body>
+</html>
