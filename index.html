@@ -701,6 +701,75 @@
     .footer { padding: 40px 22px 44px; border-radius: 18px; margin-bottom: 28px; }
     .lang-toggle button { font-size: 11px; padding: 4px 10px; letter-spacing: 0.05em; }
   }
+
+  /* ================= print / PDF ================= */
+  @media print {
+    :root, :root[data-theme="dark"] {
+      --paper: #EAE9E1;
+      --panel: #F8F7F1;
+      --ink: #313230;
+      --muted: #75746B;
+      --green: #59797A;
+      --green-soft: #90ACAB;
+      --amber: #A69269;
+      --hairline: rgba(49, 50, 48, 0.13);
+      --card: rgba(99, 136, 137, 0.07);
+      --shadow: none;
+      --footer-bg: linear-gradient(140deg, #2B2D2A 0%, #2E3B40 55%, #41626E 118%);
+      --footer-ink: #EFEEE5;
+      --acc1: #638889;
+      --acc2: #A98D53;
+      --acc3: #5F7290;
+      --acc4: #9E6B5E;
+    }
+    @page { size: A4; margin: 9mm; }
+    body {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+    body::before, .top-nav, .side-nav, .lang-toggle { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero { padding: 8mm 0 4mm; }
+    .name-zh { font-size: 52px; }
+    .name-en-big { font-size: 44px; }
+    .motto { font-size: 19px; margin-top: 12px; }
+    .intro { font-size: 12px; }
+    .chip { font-size: 10.5px; padding: 4px 11px; }
+    .titles { gap: 8px; margin-top: 18px; }
+    .titles li { padding: 9px 12px 8px; box-shadow: none; break-inside: avoid; }
+    .titles .t-role { font-size: 12px; }
+    .titles .t-org { font-size: 10px; }
+    .portrait { width: 210px; }
+    .panel {
+      box-shadow: none;
+      padding: 26px 30px 24px;
+      margin: 14px auto;
+      border-radius: 16px;
+    }
+    .panel h2 { font-size: 22px; break-after: avoid; }
+    #edu { break-before: page; }
+    .h2-brush { margin-bottom: 18px; }
+    .row, .case { break-inside: avoid; padding: 13px 0; }
+    .row li, .case-body li, .plain-list li { font-size: 11.5px; }
+    .row h3 { font-size: 14px; }
+    .case-meta h3 { font-size: 16px; }
+    .row .role, .case-meta .role { font-size: 12px; }
+    .row .when, .case-meta .date { font-size: 10.5px; }
+    .strength, .skill { break-inside: avoid; box-shadow: none; }
+    .strength li, .skill li { font-size: 11px; }
+    .strength h3 { font-size: 13px; box-shadow: none; }
+    .skill h3 { font-size: 13.5px; }
+    .two-col { break-inside: auto; }
+    .footer {
+      box-shadow: none;
+      break-inside: avoid;
+      padding: 34px 24px 38px;
+      margin: 14px auto;
+    }
+    a { text-decoration: none; }
+  }
 </style>
 
 <nav class="top-nav" aria-label="Sections">
@@ -1069,7 +1138,8 @@
     var root = document.documentElement;
     var saved = null;
     try { saved = localStorage.getItem("yixuan-lang"); } catch (e) {}
-    var lang = saved === "en" ? "en" : "zh";
+    var qs = new URLSearchParams(location.search).get("lang");
+    var lang = qs === "en" || qs === "zh" ? qs : (saved === "en" ? "en" : "zh");
     apply(lang);
 
     document.getElementById("btn-zh").addEventListener("click", function () { apply("zh"); });
