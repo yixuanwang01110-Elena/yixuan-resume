@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-lang="zh">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -832,8 +832,8 @@
 </nav>
 
 <div class="lang-toggle" role="group" aria-label="Language">
-  <button id="btn-zh" class="active" type="button">中文</button>
-  <button id="btn-en" type="button">EN</button>
+  <button id="btn-zh" type="button">中文</button>
+  <button id="btn-en" class="active" type="button">EN</button>
 </div>
 
 <nav class="side-nav" aria-label="Sections">
@@ -1192,7 +1192,7 @@
     var saved = null;
     try { saved = localStorage.getItem("yixuan-lang"); } catch (e) {}
     var qs = new URLSearchParams(location.search).get("lang");
-    var lang = qs === "en" || qs === "zh" ? qs : (saved === "en" ? "en" : "zh");
+    var lang = qs === "en" || qs === "zh" ? qs : (saved === "zh" ? "zh" : "en");
     apply(lang);
 
     document.getElementById("btn-zh").addEventListener("click", function () { apply("zh"); });
