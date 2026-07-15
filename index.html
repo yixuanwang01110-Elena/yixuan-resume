@@ -435,6 +435,16 @@
     border-top: 1px solid var(--hairline);
   }
   .case:first-of-type { border-top: none; padding-top: 0; }
+  /* Projects is two sections so print can break between them;
+     on screen they merge into one seamless panel */
+  @media screen {
+    #projects { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none; margin-bottom: 0; padding-bottom: 2px; }
+    .panel.proj-cont { border-top-left-radius: 0; border-top-right-radius: 0; border-top: none; margin-top: 0; padding-top: 2px; clip-path: inset(0px -80px -80px -80px); }
+    .proj-cont .case:first-of-type { border-top: 1px solid var(--hairline); padding-top: 24px; }
+  }
+  @media screen and (max-width: 900px) {
+    .proj-cont .case:first-of-type { padding-top: 18px; }
+  }
   .case-meta h3 {
     font-family: var(--font-display-en);
     font-size: 23px;
@@ -794,10 +804,14 @@
     [data-lang="en"] .strength { padding: 6px 8px 5px; }
     [data-lang="en"] .plain-list li { padding: 2px 0 2px 11px; }
     [data-lang="en"] .footer { margin: 3px auto 3mm; padding: 8px 16px; }
-    /* EN: let the Projects panel split across pages so page 1 fills up;
-       each fragment keeps its own padding and rounded corners */
-    [data-lang="en"] #projects { break-inside: auto; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-    [data-lang="en"] #projects article:nth-of-type(2) { break-before: page; padding-top: 4mm; }
+    /* EN: PulpaTronics stays on page 1; the continuation panel opens page 2
+       as its own rounded bubble with normal top spacing */
+    [data-lang="en"] .panel-outer:has(> .proj-cont) { break-before: page; padding-top: 5mm; }
+    /* ZH print keeps the two Projects sections merged as one panel,
+       same as on screen (ZH breaks at Strengths, not inside Projects) */
+    [data-lang="zh"] #projects { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none; padding-bottom: 2px; }
+    [data-lang="zh"] .panel.proj-cont { margin-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; border-top: none; padding-top: 2px; }
+    [data-lang="zh"] .proj-cont .case:first-of-type { border-top: 1px solid var(--hairline); padding-top: 5px; }
     /* ZH page 2 starts at the Strengths panel: force the break, pad the top,
        and let the page-2 panels breathe to fill the sheet evenly */
     [data-lang="zh"] .panel-outer:has(> #strengths) { break-before: page; padding-top: 8mm; }
@@ -1025,7 +1039,10 @@
       </ul>
     </div>
   </article>
+</section></div>
 
+<!-- print splits here: on screen the two halves render as one seamless panel -->
+<div class="panel-outer"><section class="panel reveal proj-cont">
   <article class="case">
     <div class="case-meta">
       <h3>UniBridge</h3>
